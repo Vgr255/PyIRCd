@@ -6,9 +6,6 @@ import parse
 
 class IRCServerTest(unittest.TestCase):
     def test_parse_raw_data(self):
-        with self.assertRaises(AssertionError):
-            parse.parse_raw_data("non-byte object")
-
         data = [
             (b"JOIN :#channel", [b"JOIN", b"#channel"]),
             (b"PRIVMSG target :message", [b"PRIVMSG", b"target", b"message"]),

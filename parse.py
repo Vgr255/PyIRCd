@@ -1,7 +1,6 @@
 import config
 
 def parse_raw_data(data):
-    assert isinstance(data, bytes), "data must be bytes"
     cmd, *rest = data.split(b" ")
     args = [cmd.upper()]
     for i, arg in enumerate(rest):
@@ -12,7 +11,3 @@ def parse_raw_data(data):
         args.append(arg)
 
     return args
-
-
-
-

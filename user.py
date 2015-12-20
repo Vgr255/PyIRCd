@@ -21,4 +21,4 @@ class User:
         self.channels = []
 
     def __str__(self):
-        return "{self.nick}!{self.ident}@{self.host}".format(self = self)
+        return "{self.nick}!{self.ident}@{self.host}".format(self=self)

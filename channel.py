@@ -1,13 +1,13 @@
 import events
 import parse
 
-class MissingDict(dict):
+class ChannelDict(dict):
     def __missing__(self, name):
         result = Channel(name)
         self[name] = result
         return result
 
-_channels = MissingDict()
+_channels = ChannelDict()
 
 exists = _channels.__contains__
 get = _channels.__getitem__

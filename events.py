@@ -9,12 +9,14 @@ def set(event):
         return f
     return _setter
 
-def get(data):
-    cmd, *rest = data
+def get(serv, user, data):
+    cmd, *rest = data.split()
     if cmd in _events:
-        _events[cmd](*rest[_maxparams[cmd]:])
+        return _events[cmd](serv, user, rest)
 
+    return _events[b"UNKNOWN COMMAND"](serv, cmd, user, rest)
 
-
-
+@set(b"UNKNOWN COMMAND")
+def unknown(serv, cmd, user, rest):
+    serv.send(b"PRIVMSG", user, cmd, b":Unknown command")
 

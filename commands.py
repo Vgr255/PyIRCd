@@ -18,7 +18,7 @@ def channel_join(serv, user, data):
     if data:
         channels, *rest = data.split()
     else:
-        channels = []
+        channels = rest = [] # rest is only needed for the check below; it will be false
 
     if rest:
         keys, *rest = rest

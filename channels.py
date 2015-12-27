@@ -68,7 +68,7 @@ class Channel:
 
     def __init__(self, name):
         self.name = name
-        self._users = {}
+        self._users = set()
         self._modes = set()
         self._displayed_modes = set()
         self._ops = set()

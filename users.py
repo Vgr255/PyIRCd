@@ -8,7 +8,8 @@ class UserDict(dict):
 
 _users = UserDict()
 
-exists = _users.__contains__
+def exists(nick, ident, host, real):
+    return (nick, ident, host, real) in _users
 
 def get(nick, ident, host, real):
     return _users[nick, ident, host, real]

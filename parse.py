@@ -1,7 +1,15 @@
+import re
+
 import config
 
+_prefix_match = re.compile("^:.+!.+@.+$").match
+
 def parse_raw_data(data):
-    cmd, *rest = data.split(b" ")
+    params = data.split(b" ")
+    if _prefix_match(params[0]): # prefix; ignore
+        _, cmd, *rest = params
+    else:
+        cmd, *rest = params
     args = [cmd.upper()]
     for i, arg in enumerate(rest):
         if arg.startswith(b":"):

@@ -1,3 +1,5 @@
+import parse
+
 _events = {}
 
 def set(event):
@@ -10,7 +12,7 @@ def set(event):
     return _setter
 
 def get(serv, user, data):
-    cmd, *rest = data.split()
+    cmd, *rest = parse.parse_raw_data(data)
     if cmd in _events:
         return _events[cmd](serv, user, rest)
 

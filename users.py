@@ -1,24 +1,25 @@
-_users = []
+class UserDict(dict):
+    def __missing__(self, name):
+        result = User(*name)
+        self[name[0]] = result
+        return result
 
-exists = users.__contains__
+_users = UserDict()
+
+exists = _users.__contains__
 
 def get(nick, ident, host, real):
-    for user in users:
-        if user.ident == ident:
-            return user
-
-    result = User(nick, ident, host, real)
-    users.append(result)
-    return result
+    return _users[nick, ident, host, real]
 
 class User:
+
     def __init__(self, nick, ident, host, real):
-        self.nick = nick
-        self.ident = ident
-        self.host = host
-        self.real = real
+        self._nick = nick
+        self._ident = ident
+        self._host = host
+        self._real = real
          
-        self.channels = []
+        self.channels = set()
 
     def __str__(self):
         return "{self.nick}!{self.ident}@{self.host}".format(self=self)

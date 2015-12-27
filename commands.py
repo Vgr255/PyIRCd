@@ -16,7 +16,7 @@ _maxparams = {
 @events.set(b"JOIN")
 def channel_join(serv, user, data):
     if data:
-        channels, *rest = data.split()
+        channels, *rest = data
     else:
         channels = rest = "" # rest is only needed for the check below; it will be false
 

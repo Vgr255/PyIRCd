@@ -1,3 +1,5 @@
+# Status: Conceptual
+
 class UserDict(dict):
     def __missing__(self, name):
         result = User(*name)

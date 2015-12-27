@@ -1,3 +1,5 @@
+# Status: Conceptual
+
 import itertools
 
 import channels

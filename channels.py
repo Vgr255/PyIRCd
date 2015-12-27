@@ -1,3 +1,5 @@
+# Status: Nonfunctional WIP
+
 import types
 
 import events

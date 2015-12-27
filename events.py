@@ -1,3 +1,5 @@
+# Status: Almost entirely done
+
 import parse
 
 _events = {}

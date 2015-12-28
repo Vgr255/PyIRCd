@@ -121,15 +121,33 @@ class Channel:
 
     @throttle.setter
     def throttle(self, value):
-        if self._throttle is None and value is not None:
+        if value is not None:
             self._modes.add("j")
             self._throttle = int(value)
-        elif self._throttle is not None:
-            if value is None:
-                self._modes.remove("j")
-                self._throttle = None
-            else:
-                self._throttle = int(value)
+        else:
+            self._modes.remove("j")
+            self._throttle = None
+
+    @property
+    def limit(self):
+        return self._limit
+
+    @limit.setter
+    def limit(self, value):
+        if value is not None:
+            self._modes.add("l")
+            self._limit = int(value)
+        else:
+            self._modes.remove("l")
+            self._limit = None
+
+    @property
+    def forward(self):
+        return self._forward
+
+    @forward.setter
+    def forward(self, value):
+        pass
 
     def join(self, user, key):
         self.users[user.name] = user
